@@ -1,0 +1,45 @@
+[2024-08-05 18:02:53,286] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2024-08-05 18:02:53,290] WARN config\zookeeper.properties is relative. Prepend .\ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2024-08-05 18:02:53,292] ERROR Invalid config, exiting abnormally (org.apache.zookeeper.server.quorum.QuorumPeerMain)
+org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing config/zookeeper.properties
+	at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:198)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:125)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:91)
+Caused by: java.lang.IllegalArgumentException: config\zookeeper.properties file is missing
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.doFailForNonExistingPath(VerifyingFileFactory.java:54)
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.validate(VerifyingFileFactory.java:47)
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.create(VerifyingFileFactory.java:39)
+	at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:183)
+	... 2 more
+[2024-08-05 18:02:53,303] INFO ZooKeeper audit is disabled. (org.apache.zookeeper.audit.ZKAuditProvider)
+[2024-08-05 18:02:53,315] ERROR Exiting JVM with code 2 (org.apache.zookeeper.util.ServiceUtils)
+[2024-08-05 18:03:49,330] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2024-08-05 18:03:49,332] WARN config\zookeeper.properties is relative. Prepend .\ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2024-08-05 18:03:49,333] ERROR Invalid config, exiting abnormally (org.apache.zookeeper.server.quorum.QuorumPeerMain)
+org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing config/zookeeper.properties
+	at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:198)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:125)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:91)
+Caused by: java.lang.IllegalArgumentException: config\zookeeper.properties file is missing
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.doFailForNonExistingPath(VerifyingFileFactory.java:54)
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.validate(VerifyingFileFactory.java:47)
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.create(VerifyingFileFactory.java:39)
+	at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:183)
+	... 2 more
+[2024-08-05 18:03:49,338] INFO ZooKeeper audit is disabled. (org.apache.zookeeper.audit.ZKAuditProvider)
+[2024-08-05 18:03:49,343] ERROR Exiting JVM with code 2 (org.apache.zookeeper.util.ServiceUtils)
+[2024-08-05 18:26:00,594] INFO Reading configuration from: config/zookeeper.properties (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2024-08-05 18:26:00,599] WARN config\zookeeper.properties is relative. Prepend .\ to indicate that you're sure! (org.apache.zookeeper.server.quorum.QuorumPeerConfig)
+[2024-08-05 18:26:00,602] ERROR Invalid config, exiting abnormally (org.apache.zookeeper.server.quorum.QuorumPeerMain)
+org.apache.zookeeper.server.quorum.QuorumPeerConfig$ConfigException: Error processing config/zookeeper.properties
+	at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:198)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.initializeAndRun(QuorumPeerMain.java:125)
+	at org.apache.zookeeper.server.quorum.QuorumPeerMain.main(QuorumPeerMain.java:91)
+Caused by: java.lang.IllegalArgumentException: config\zookeeper.properties file is missing
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.doFailForNonExistingPath(VerifyingFileFactory.java:54)
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.validate(VerifyingFileFactory.java:47)
+	at org.apache.zookeeper.server.util.VerifyingFileFactory.create(VerifyingFileFactory.java:39)
+	at org.apache.zookeeper.server.quorum.QuorumPeerConfig.parse(QuorumPeerConfig.java:183)
+	... 2 more
+[2024-08-05 18:26:00,628] INFO ZooKeeper audit is disabled. (org.apache.zookeeper.audit.ZKAuditProvider)
+[2024-08-05 18:26:00,641] ERROR Exiting JVM with code 2 (org.apache.zookeeper.util.ServiceUtils)
