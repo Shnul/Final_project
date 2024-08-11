@@ -1,7 +1,3 @@
-# Virtual environment
-.venv/
-venv/
-
 # IDE-specific directories
 .idea/
 .vscode/
@@ -14,12 +10,5 @@ __pycache__/
 *.tmp
 *.log
 
-# Docker-related files
-docker-compose.yaml
-Dockerfile
-
-# Other specific files
-cryptodb.session.sql
-CtmpShaharFinal_Projectstart-notebook.sh
-start-notebook.sh
-Naya College CDE- Final Project.docx.pdf
+# Ignore other specific files
+# Add any other files or directories you want to ignore here

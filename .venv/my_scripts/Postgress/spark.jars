@@ -1,0 +1,7 @@
+from pyspark.sql import SparkSession
+
+# Initialize Spark Session with JDBC driver
+spark = SparkSession.builder \
+    .appName("CryptoAPIConsumer") \
+    .config("spark.jars", "C:\tmp\Shahar\Final_Project\DB\postgresql-42.2.18.jar") \
+    .getOrCreate()
