@@ -1,0 +1,25 @@
+# Virtual environment
+.venv/
+venv/
+
+# IDE-specific directories
+.idea/
+.vscode/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Temporary files
+*.tmp
+*.log
+
+# Docker-related files
+docker-compose.yaml
+Dockerfile
+
+# Other specific files
+cryptodb.session.sql
+CtmpShaharFinal_Projectstart-notebook.sh
+start-notebook.sh
+Naya College CDE- Final Project.docx.pdf
