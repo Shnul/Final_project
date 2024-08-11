@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:6.2.0
+    hostname: zookeeper-learn
+    container_name: zookeeper-learn
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    networks:
+      - final_project_default
+
+  kafka:
+    image: confluentinc/cp-kafka:6.2.0
+    hostname: kafka-learn
+    container_name: kafka-learn
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+      - "29092:29092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper-learn:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-learn:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    networks:
+      - final_project_default
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:3.30.0
+    ports:
+      - "9003:9000"
+    environment:
+      KAFKA_BROKERCONNECT: kafka-learn:9092
+    depends_on:
+      - kafka
+    networks:
+      - final_project_default
+
+  postgres:
+    image: postgres:13
+    container_name: final_project-postgres-1
+    environment:
+      POSTGRES_USER: shahar
+      POSTGRES_PASSWORD: 64478868
+      POSTGRES_DB: cryptodb
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - final_project_default
+
+  webserver:
+    image: apache/airflow:2.1.2
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://shahar:64478868@postgres/cryptodb
+      AIRFLOW__CORE__FERNET_KEY: 'NEW_GENERATED_FERNET_KEY'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+    volumes:
+      - ./dags:/opt/airflow/dags
+    ports:
+      - "8081:8080"
+    command: webserver
+    networks:
+      - final_project_default
+
+  scheduler:
+    image: apache/airflow:2.1.2
+    depends_on:
+      - webserver
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://shahar:64478868@postgres/cryptodb
+      AIRFLOW__CORE__FERNET_KEY: 'NEW_GENERATED_FERNET_KEY'
+      AIRFLOW__CORE__LOAD_EXAMPLES: 'False'
+    volumes:
+      - ./dags:/opt/airflow/dags
+    command: scheduler
+    networks:
+      - final_project_default
+
+  spark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spark-env-new
+    volumes:
+      - .:/workspace
+    ports:
+      - "4040:4040"
+      - "8888:8888"
+    environment:
+      HADOOP_HOME: /opt/hadoop
+      SPARK_HOME: /usr/local/spark
+      PATH: /usr/local/spark/bin:$PATH
+    networks:
+      - final_project_default
+
+volumes:
+  postgres-db-volume:
+
+networks:
+  final_project_default:
+    driver: bridge
